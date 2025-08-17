@@ -1,8 +1,9 @@
-# backend/api/tests.py
+"""Tests for Task API."""
+
 from http import HTTPStatus
+from django.test import Client, TestCase
 
 from api import models
-from django.test import Client, TestCase
 
 
 class TaskiAPITestCase(TestCase):
