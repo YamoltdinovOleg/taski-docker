@@ -1,3 +1,4 @@
+"""URL configuration for taski project."""
 from api import views
 from django.contrib import admin
 from django.urls import include, path

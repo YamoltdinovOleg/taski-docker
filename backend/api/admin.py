@@ -1,10 +1,14 @@
+"""Admin configuration for Task model."""
+
 from django.contrib import admin
 
 from .models import Task
 
 
+@admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'completed')
+    """Admin interface for Task model."""
 
-
-admin.site.register(Task, TaskAdmin)
+    list_display = ('title', 'description', 'completed', 'created_at')
+    list_filter = ('completed', 'created_at')
+    search_fields = ('title', 'description')

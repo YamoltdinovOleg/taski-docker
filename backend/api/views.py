@@ -1,15 +1,19 @@
-from rest_framework import status, viewsets
+"""Views for Task API."""
+
+from rest_framework import viewsets
 from rest_framework.response import Response
-
 from .models import Task
-from .serializers import TaskSerializer
+from .serializers import TaskSerializer, TaskListSerializer
 
 
-class TaskView(viewsets.ModelViewSet):
-    serializer_class = TaskSerializer
+class TaskViewSet(viewsets.ModelViewSet):
+    """ViewSet for Task model."""
+
     queryset = Task.objects.all()
+    serializer_class = TaskSerializer
 
-    def destroy(self, *args, **kwargs):
-        serializer = self.get_serializer(self.get_object())
-        super().destroy(*args, **kwargs)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    def list(self, request):
+        """List all tasks with simplified serializer."""
+        queryset = self.get_queryset()
+        serializer = TaskListSerializer(queryset, many=True)
+        return Response(serializer.data)

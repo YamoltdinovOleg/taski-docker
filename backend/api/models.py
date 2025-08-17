@@ -1,10 +1,16 @@
+"""Task model definition."""
+
 from django.db import models
 
 
 class Task(models.Model):
-    title = models.CharField(verbose_name='Заголовок', max_length=120)
-    description = models.TextField()
-    completed = models.BooleanField(default=False)
+    """Task model for storing task information."""
 
-    def _str_(self):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    completed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        """Return string representation of the task."""
         return self.title
