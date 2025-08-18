@@ -173,8 +173,8 @@ jobs:
       uses: appleboy/scp-action@master
     # Передаём параметры для action appleboy/scp-action:
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
+        host: ${{ 89.169.187.227 }}
+        username: ${{ yc-user }}
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         source: "docker-compose.production.yml"
